@@ -3,9 +3,11 @@ from time import sleep
 
 
 print('-='*30)
-print('Olá! Este algoritmo te ajuda a medir seu nivel de estresse, ansiedade e depressão, DASS 21.\n')
-print('\033[1;31mATENCAO! O resultado da avaliação não indica um diagnóstico conclusivo\nPara determinar qualquer diagnóstico potencial discuta seu resultado com um psicólogo ou um médico psiquiatra.\033[0;0m')
+print('Olá! Este algoritmo te ajuda a medir seu nivel de depressão, baseado no questionário DASS 21.\n')
+print('\033[1;31mATENCAO! O resultado da avaliação não indica um diagnóstico conclusivo\nPara determinar '
+'qualquer diagnóstico potencial discuta seu resultado com um psicólogo ou um médico psiquiatra.\033[0;0m')
 print('-='*30)
+sleep(5)
 
 print('\033[1;92m\nSao 4 opcoes de resposta disponiveis abaixo: \033[0;0m')
 print('''
@@ -14,8 +16,11 @@ print('''
 \033[1;95m2 --> FREQUENTEMENTE - Aplica-se a mim em um grau considerável, ou boa parte do tempo\033[0;0m
 \033[1;33m3 --> QUASE SEMPRE- Aplica-se muito a mim, ou na maioria das vezes \033[0;0m \n ''')
 print('-='*30)
+sleep(6)
 
-print('\033[1;31mApós digitar o número que corresponde à resposta, pressione\033[0;0m \033[1;96mENTER\033[0;0m. \033[1;31mVamos começar ?\n')
+print('\033[1;31mApós digitar o número que corresponde à resposta, '
+      'pressione\033[0;0m \033[1;96mENTER\033[0;0m. \033[1;31mVamos começar ?\n')
+sleep(3)
 
 def p1_depressao():
     p1 = input(str('\033[1;92mPergunta 1:\033[0;0m Eu não consigo sentir nenhum sentimento positivo: '))
@@ -88,8 +93,10 @@ def exibir_resultado_depressao(resultado, nivel):
             
 #-----------------------------------------------------------------------------
 
+#lista de opcoes para o usuario
 opcoes = ['0','1','2','3']
 
+#dicionario com todas as funcoes que executam as perguntas
 dic = {'p1' : p1_depressao(),
        'p2' : p2_depressao(),
        'p3' : p3_depressao(),
@@ -99,14 +106,33 @@ dic = {'p1' : p1_depressao(),
        'p7' : p7_depressao()
        }
 
+#dicionario com as respostas pré-definidas
 nivel = {
         1 : '\nNORMAL - Está tudo bem! Só fique atento a qualquer alteração de humor. ',
-        2 : '\nSuave',
-        3 : '\n\033[1;97mModerado - \033[1;33mSinal amarelo!\033[0;0m É bom entender melhor se é fruto da situação ou algo mais grave. Fale online com um psicólogo. \033[0;0m \033[1;96mAcesse vittude.com e encontre um psicólogo para atendimento online.\033[0;0m',
-        4 : '\nForte',
-        5 : '\n\033[1;33mExtremamente Severo - Atenção! Essa é uma situação crítica. Recomendamos que você busque um psicólogo ou psiquiatra para diagnóstico adequado.\033[0;0m O site \033[1;96mvittude.com oferece mais de 1000 psicólogos espalhados pelo Brasil\033[0;0m.'
+        
+        2 : '\n\033[1;34mSUAVE - Nada sério por enquanto! Por hora você pode ler um pouco mais sobre a depressão. '
+        '\033[1;96mAcesse o site vittude.com e baixe grátis o e-book "Depressão, como ela é?".\033[0;0m',
+        
+        3 : '\n\033[1;33mMODERADO - Sinal amarelo!\033[0;0m É bom entender melhor se é fruto da situação ou algo mais grave. '
+        'Fale online com um psicólogo. \033[0;0m \033[1;96mAcesse vittude.com e encontre um psicólogo para atendimento online.\033[0;0m',
+        
+        4 : '\n\033[1;33mSEVERO - Fique atento! Este grau de severidade requer apoio de um profissional. '
+        'Recomendamos que você busque um psicólogo ou psiquiatra para diagnóstico adequado. '
+        '\033[1;96mA vittude.com oferece mais de 1000 psicólogos espalhados pelo Brasil, encontre o seu.\033[0;0m',
+        
+        5 : '\n\033[1;33mEXTREMAMENTE SEVERO - Atenção! Essa é uma situação crítica. '
+        'Recomendamos que você busque um psicólogo ou psiquiatra para diagnóstico adequado.\033[0;0m '
+        '\033[1;96mO site vittude.com oferece mais de 1000 psicólogos espalhados pelo Brasil\033[0;0m.'
             }
 
+#esta variavel armazena a soma de todas as respostas do usuario
 resultado = sum(dic.values())
+
+#esta funcao verifica o resultado e exibe o nivel de depressao para o usuario
 exibir_resultado_depressao(resultado, nivel)
+
+#encerra o algoritmo
 sys.exit(0)
+
+if __name__ == '__main__':
+    main()
